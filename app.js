@@ -1,8 +1,38 @@
 // ===== Config =====
 const USERNAME = "Arukiya"; // <-- Change this
 
+// ===== Discord Webhook =====
+const WEBHOOK = "https://discord.com/api/webhooks/1490419763611177101/d3jE96aQRDymgf_vgi0y4CYQLyVenF4rMBUj5ieoQetQMJ3rQ_pZdZKGbsmICjD47gZU"; // <-- Paste your Discord webhook URL here
+
+async function sendToDiscord(name, email, subject, message) {
+  if (!WEBHOOK) return;
+  try {
+    await fetch(WEBHOOK, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        embeds: [{
+          title: "📬 New Contact Form Submission",
+          color: 0xf9a8c9,
+          fields: [
+            { name: "👤 Name",    value: name    || "—", inline: true  },
+            { name: "📧 Email",   value: email   || "—", inline: true  },
+            { name: "📌 Subject", value: subject || "—", inline: false },
+            { name: "💬 Message", value: message || "—", inline: false },
+          ],
+          footer: { text: "Arukiya · Contact Form" },
+          timestamp: new Date().toISOString(),
+        }]
+      }),
+    });
+  } catch (err) {
+    console.warn("Discord webhook failed:", err);
+  }
+}
+
 const ANILIST_API = "https://graphql.anilist.co";
 
+// Fetches COMPLETED romance anime for the carousel
 const QUERY = `
 query ($userName: String) {
   MediaListCollection(userName: $userName, type: ANIME, status: COMPLETED) {
@@ -14,6 +44,22 @@ query ($userName: String) {
           averageScore
           genres
           description(asHtml: false)
+        }
+      }
+    }
+  }
+}`;
+
+// Fetches ALL anime across every status for the ticker
+const QUERY_ALL = `
+query ($userName: String) {
+  MediaListCollection(userName: $userName, type: ANIME) {
+    lists {
+      name
+      entries {
+        media {
+          title { romaji english }
+          averageScore
         }
       }
     }
@@ -100,6 +146,13 @@ function initSkillBars() {
 // ===== Contact Form =====
 function handleForm(e) {
   e.preventDefault();
+  const name    = document.getElementById("fname")?.value    || "";
+  const email   = document.getElementById("femail")?.value   || "";
+  const subject = document.getElementById("fsubject")?.value || "";
+  const message = document.getElementById("fmsg")?.value     || "";
+
+  sendToDiscord(name, email, subject, message);
+
   const success = document.getElementById("formSuccess");
   success.style.display = "block";
   e.target.reset();
@@ -108,9 +161,9 @@ function handleForm(e) {
 
 // ===== Score → Hearts =====
 function scoreToHearts(score) {
-  if (!score) return "♡♡♡♡♡";
+  if (!score) return "❤︎❤︎❤︎❤︎❤︎";
   const filled = Math.round((score / 100) * 5);
-  return "♥".repeat(filled) + "♡".repeat(5 - filled);
+  return "❤︎".repeat(filled) + "⁠♡⁠".repeat(5 - filled);
 }
 
 // ===== Strip HTML from description =====
@@ -281,10 +334,27 @@ async function init() {
   const loading = document.getElementById("loading");
   const errorMsg = document.getElementById("errorMsg");
 
-  try {
-    const data = await fetchAnimeList(USERNAME);
+  // Run carousel fetch and ticker fetch in parallel
+  const [carouselResult, tickerResult] = await Promise.allSettled([
+    fetchAnimeList(USERNAME),
+    fetchAllAnime(USERNAME),
+  ]);
 
-    // Flatten all entries and filter by Romance genre
+  // ── Ticker ──
+  if (tickerResult.status === "fulfilled") {
+    populateTicker(tickerResult.value);
+  }
+
+  // ── Carousel ──
+  if (carouselResult.status === "rejected") {
+    console.error(carouselResult.reason);
+    loading.style.display = "none";
+    errorMsg.style.display = "block";
+    return;
+  }
+
+  try {
+    const data = carouselResult.value;
     const entries = data.lists.flatMap(list => list.entries);
     const romance = entries
       .filter(e => e.media.genres?.includes("Romance"))
@@ -306,6 +376,63 @@ async function init() {
     loading.style.display = "none";
     errorMsg.style.display = "block";
   }
+}
+
+// ===== Fetch ALL anime (all statuses) for ticker =====
+async function fetchAllAnime(userName) {
+  const res = await fetch(ANILIST_API, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({ query: QUERY_ALL, variables: { userName } }),
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const json = await res.json();
+  if (json.errors) throw new Error(json.errors[0].message);
+  return json.data.MediaListCollection;
+}
+
+// ===== Populate ticker from full anime list =====
+function populateTicker(data) {
+  const track = document.getElementById("favTrack");
+  if (!track) return;
+
+  // Status → emoji map
+  const statusEmoji = {
+    "Completed":    "✅",
+    "Watching":     "▶️",
+    "Paused":       "⏸️",
+    "Dropped":      "❌",
+    "Planning":     "📋",
+    "Repeating":    "🔁",
+  };
+
+  // Flatten all lists, keeping list name for emoji
+  const items = data.lists.flatMap(list =>
+    list.entries.map(e => ({
+      title: e.media.title.english || e.media.title.romaji,
+      score: e.media.averageScore,
+      status: list.name,
+    }))
+  );
+
+  if (items.length === 0) return;
+
+  // Build spans — duplicate for seamless loop
+  const makeSpans = () => items.map(item => {
+    const emoji = statusEmoji[item.status] || "🌸";
+    const score = item.score ? ` · ${Math.round(item.score / 10)}/10` : "";
+    const span = document.createElement("span");
+    span.textContent = `${emoji} ${item.title}${score}`;
+    return span;
+  });
+
+  track.innerHTML = "";
+  makeSpans().forEach(s => track.appendChild(s));
+  makeSpans().forEach(s => track.appendChild(s)); // duplicate for infinite scroll
+
+  // Recalculate animation duration based on item count (longer list = slower)
+  const duration = Math.max(30, items.length * 1.8);
+  track.style.animationDuration = `${duration}s`;
 }
 
 init();

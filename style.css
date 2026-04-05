@@ -924,7 +924,7 @@ a { color: inherit; }
 }
 
 .anime-card-rating {
-  font-size: 0.78rem;
+  font-size: 1.25rem;
   color: var(--pink);
   letter-spacing: 0.04em;
 }
@@ -1391,4 +1391,462 @@ a { color: inherit; }
   .mood-grid { grid-template-columns: 1fr; }
   .mood-wide { grid-column: span 1; }
   .skills-cards { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   NOW PLAYING
+   ============================================================ */
+.nowplaying-section {
+  padding: 3rem 0;
+  background: linear-gradient(135deg, var(--pink-light), var(--lavender-light));
+  transition: background var(--transition);
+}
+
+.nowplaying-inner {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  max-width: 680px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 2rem;
+  box-shadow: var(--shadow-md);
+}
+
+.np-disc {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pink), var(--lavender));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  animation: spin 8s linear infinite;
+  box-shadow: 0 4px 20px var(--glow);
+}
+
+.np-info { flex: 1; }
+
+.np-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pink);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.np-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.np-sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.np-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.np-bars span {
+  width: 4px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--pink), var(--lavender));
+  animation: soundBar 1.2s ease-in-out infinite;
+}
+
+.np-bars span:nth-child(1) { height: 40%; animation-delay: 0s; }
+.np-bars span:nth-child(2) { height: 80%; animation-delay: 0.15s; }
+.np-bars span:nth-child(3) { height: 60%; animation-delay: 0.3s; }
+.np-bars span:nth-child(4) { height: 100%; animation-delay: 0.45s; }
+.np-bars span:nth-child(5) { height: 50%; animation-delay: 0.6s; }
+
+@keyframes soundBar {
+  0%, 100% { transform: scaleY(0.4); }
+  50%       { transform: scaleY(1); }
+}
+
+/* ============================================================
+   WRITING SHOWCASE
+   ============================================================ */
+.writing-section {
+  padding: 8rem 0;
+  background: var(--bg);
+}
+
+.writing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.writing-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.writing-card::before {
+  content: '"';
+  position: absolute;
+  top: -1rem;
+  right: 1.5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 8rem;
+  color: var(--pink);
+  opacity: 0.06;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.writing-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--pink-mid);
+}
+
+.writing-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.writing-genre {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pink);
+}
+
+.writing-length {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  background: var(--bg-alt);
+  padding: 0.2rem 0.6rem;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+}
+
+.writing-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.writing-excerpt {
+  font-size: 0.88rem;
+  color: var(--text-sub);
+  line-height: 1.75;
+  font-style: italic;
+  flex: 1;
+}
+
+.writing-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.writing-tag {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: 0.2rem 0.65rem;
+}
+
+/* ============================================================
+   ANIME QUOTES
+   ============================================================ */
+.quotes-section {
+  padding: 8rem 0;
+  background: var(--bg-alt);
+}
+
+.quotes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.quote-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform var(--transition), box-shadow var(--transition);
+  position: relative;
+}
+
+.quote-card::before {
+  content: '\201C';
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  color: var(--pink);
+  opacity: 0.25;
+  line-height: 1;
+  position: absolute;
+  top: 0.75rem;
+  left: 1.25rem;
+}
+
+.quote-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.quote-card--featured {
+  background: linear-gradient(145deg, var(--pink-light), var(--lavender-light));
+  border-color: var(--pink-mid);
+  grid-column: span 1;
+}
+
+.quote-card p {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.75;
+  padding-top: 1.5rem;
+}
+
+.quote-card cite {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pink);
+  font-style: normal;
+}
+
+/* ============================================================
+   ART GALLERY
+   ============================================================ */
+.gallery-section {
+  padding: 8rem 0;
+  background: var(--bg);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 180px;
+  gap: 1rem;
+}
+
+.gallery-item {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.gallery-item.gallery-tall  { grid-row: span 2; }
+.gallery-item.gallery-wide  { grid-column: span 2; }
+
+.gallery-item:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-lg);
+  z-index: 2;
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(46,36,56,0.75) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.25rem;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+
+.gallery-overlay span {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #fff;
+  display: block;
+}
+
+.gallery-overlay small {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.7);
+  margin-top: 0.2rem;
+}
+
+/* ============================================================
+   DISCORD CTA
+   ============================================================ */
+.discord-section {
+  padding: 8rem 0;
+  background: var(--bg-alt);
+}
+
+.discord-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.discord-stats {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.discord-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.discord-stat strong {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--pink), var(--lavender));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.discord-stat span {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+.discord-btn {
+  background: linear-gradient(135deg, #5865f2, #7289da);
+  box-shadow: 0 4px 24px rgba(88,101,242,0.35);
+}
+
+.discord-btn:hover {
+  box-shadow: 0 10px 36px rgba(88,101,242,0.45);
+}
+
+/* Discord mock UI */
+.discord-preview {
+  perspective: 1000px;
+}
+
+.discord-mock {
+  background: #36393f;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  transform: rotateY(-4deg) rotateX(2deg);
+  transition: transform var(--transition);
+}
+
+.discord-mock:hover {
+  transform: rotateY(0deg) rotateX(0deg);
+}
+
+.dm-header {
+  background: #2f3136;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #dcddde;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.dm-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+}
+
+.dm-dot--green { background: #3ba55c; box-shadow: 0 0 6px #3ba55c; }
+
+.dm-messages {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.dm-msg {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.dm-user {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.dm-msg p {
+  font-size: 0.82rem;
+  color: #dcddde;
+  line-height: 1.5;
+  background: rgba(255,255,255,0.04);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0 8px 8px 8px;
+}
+
+/* ============================================================
+   RESPONSIVE ADDITIONS
+   ============================================================ */
+@media (max-width: 1024px) {
+  .writing-grid  { grid-template-columns: 1fr 1fr; }
+  .quotes-grid   { grid-template-columns: 1fr 1fr; }
+  .gallery-grid  { grid-template-columns: repeat(2, 1fr); }
+  .gallery-item.gallery-wide { grid-column: span 2; }
+  .discord-inner { grid-template-columns: 1fr; gap: 3rem; }
+}
+
+@media (max-width: 768px) {
+  .writing-grid  { grid-template-columns: 1fr; }
+  .quotes-grid   { grid-template-columns: 1fr; }
+  .gallery-grid  { grid-template-columns: 1fr 1fr; }
+  .gallery-item.gallery-tall { grid-row: span 1; }
+  .nowplaying-inner { flex-direction: column; text-align: center; }
+  .discord-stats { justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid  { grid-template-columns: 1fr; }
+  .gallery-item.gallery-wide { grid-column: span 1; }
 }
