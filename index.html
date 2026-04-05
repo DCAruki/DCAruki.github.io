@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arukiya — Creative & Anime Enthusiast</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="chatbot.css" />
+</head>
+<body>
+
+  <!-- ── Navbar ── -->
+  <nav class="navbar" id="navbar">
+    <span class="nav-logo">Arukiya</span>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#anime">Anime</a></li>
+      <li><a href="#picks">Picks</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <span id="themeIcon">🌙</span> <span id="themeLabel">Dark</span>
+    </button>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-petals" id="petals"></div>
+
+    <div class="hero-content fade-in">
+      <div class="hero-badge">
+        <span>✿</span> Romance Anime Enthusiast &amp; Creative
+      </div>
+      <p class="hero-greeting">Hello, I'm</p>
+      <h1 class="hero-name">Arukiya</h1>
+      <p class="hero-tagline">
+        "In every story, there's a moment where hearts bloom like cherry blossoms — quiet, fleeting, and impossibly beautiful."
+      </p>
+      <div class="hero-actions">
+        <a href="#about" class="btn-primary">Get to know me</a>
+        <a href="#anime" class="btn-outline">My Anime List</a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">120+</span>
+        <span class="hero-stat-label">Anime Watched</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">6 yrs</span>
+        <span class="hero-stat-label">Writing Stories</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">∞</span>
+        <span class="hero-stat-label">Feelings Felt</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── About ── -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-layout">
+
+        <div class="about-visual fade-in">
+          <div class="about-img-frame">
+            <div class="about-img-placeholder">
+            </div>
+          </div>
+        </div>
+
+        <div class="about-text fade-in delay-1">
+          <span class="section-eyebrow">About Me</span>
+          <h2 class="section-title">A dreamer who found home in stories</h2>
+          <p class="section-lead">
+            I'm Arukiya — a writer, digital artist, and hopeless romantic who believes the most profound emotions are the ones left unspoken. Romance anime taught me that vulnerability is a form of courage, and that the space between two people can hold entire universes.
+          </p>
+          <p class="section-lead" style="margin-top:1rem;">
+            When I'm not deep in a 24-episode emotional spiral, I'm writing, sketching, or building little digital worlds that feel like the opening scene of a slice-of-life anime — soft light, warm coffee, and the quiet hum of something beginning.
+          </p>
+          <div class="about-tags" style="margin-top:1.75rem;">
+            <span class="tag">🌸 Romance Anime</span>
+            <span class="tag">✍️ Creative Writing</span>
+            <span class="tag">🎨 Digital Art</span>
+            <span class="tag">🎵 Anime OSTs</span>
+            <span class="tag">📚 Light Novels</span>
+            <span class="tag">☕ Slow Mornings</span>
+            <span class="tag">🌙 Late Night Watches</span>
+          </div>
+          <a href="#contact" class="btn-primary" style="margin-top:0.5rem;">Let's connect</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Skills ── -->
+  <section class="skills-section" id="skills">
+    <div class="container">
+      <div class="section-header center fade-in">
+        <span class="section-eyebrow">What I Do</span>
+        <h2 class="section-title center">Skills &amp; Crafts</h2>
+        <p class="section-lead center">A little bit of everything, a lot of heart in all of it.</p>
+      </div>
+
+      <div class="skills-layout">
+        <div class="skills-bars fade-in">
+          <div class="skill-row skill-item" data-width="92">
+            <div class="skill-meta">
+              <span class="skill-name">🌸 Storytelling</span>
+              <span class="skill-pct">92%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
+          </div>
+          <div class="skill-row skill-item" data-width="87">
+            <div class="skill-meta">
+              <span class="skill-name">✍️ Creative Writing</span>
+              <span class="skill-pct">87%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-width="87"></div></div>
+          </div>
+          <div class="skill-row skill-item" data-width="82">
+            <div class="skill-meta">
+              <span class="skill-name">🎨 Digital Illustration</span>
+              <span class="skill-pct">82%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
+          </div>
+          <div class="skill-row skill-item" data-width="78">
+            <div class="skill-meta">
+              <span class="skill-name">💻 Web Design</span>
+              <span class="skill-pct">78%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-width="78"></div></div>
+          </div>
+          <div class="skill-row skill-item" data-width="74">
+            <div class="skill-meta">
+              <span class="skill-name">📸 Photography</span>
+              <span class="skill-pct">74%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-width="74"></div></div>
+          </div>
+          <div class="skill-row skill-item" data-width="88">
+            <div class="skill-meta">
+              <span class="skill-name">🎵 Music Curation</span>
+              <span class="skill-pct">88%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+          </div>
+        </div>
+
+        <div class="skills-cards fade-in delay-2">
+          <div class="skill-card">
+            <div class="skill-card-icon">🖊️</div>
+            <h4>Fiction Writing</h4>
+            <p>Short stories, character studies, and slow-burn romance arcs that ache.</p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card-icon">🎭</div>
+            <h4>Character Design</h4>
+            <p>Bringing emotional depth to characters through visual storytelling.</p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card-icon">🌐</div>
+            <h4>UI / Web</h4>
+            <p>Crafting interfaces that feel as intentional as a well-written scene.</p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card-icon">🎼</div>
+            <h4>Playlist Curation</h4>
+            <p>Building soundscapes for every mood — from hopeful to bittersweet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Quote Banner ── -->
+  <section class="quote-banner">
+    <div class="container">
+      <div class="quote-inner fade-in">
+        <p class="quote-text">
+          The most beautiful things are felt, not seen — like the warmth of a hand you've been waiting to hold.
+        </p>
+        <span class="quote-author">Arukiya</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Journey ── -->
+  <section class="journey-section" id="journey">
+    <div class="container">
+      <div class="section-header center fade-in">
+        <span class="section-eyebrow">My Story</span>
+        <h2 class="section-title center">The Journey So Far</h2>
+        <p class="section-lead center">Chapters of a story still being written.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item fade-in">
+          <div class="timeline-card">
+            <span class="timeline-year">2019</span>
+            <h4>The First Anime</h4>
+            <p>Watched "Bunny Girl Senpai" for the first time and cried for three hours straight. Something shifted. I never looked back.</p>
+          </div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-empty"></div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-empty"></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">2020</span>
+            <h4>100 Anime Milestone</h4>
+            <p>Hit 100 completed anime. Realized romance was more than a genre — it was a lens for understanding people.</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-card">
+            <span class="timeline-year">2022</span>
+            <h4>Started Writing</h4>
+            <p>Began writing short romance stories inspired by the anime that moved me most. Published the first one online.</p>
+          </div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-empty"></div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-empty"></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">2023</span>
+            <h4>Discovered Digital Art</h4>
+            <p>Started illustrating characters from my stories. Found a new language for emotion — one made of color and line.</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-card">
+            <span class="timeline-year">2026</span>
+            <h4>Built This Space</h4>
+            <p>Decided to bring everything together — a little corner of the internet that feels like home. You're in it now.</p>
+          </div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-empty"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Anime Carousel ── -->
+  <section class="anime-section" id="anime">
+    <div class="container">
+      <div class="section-header center fade-in">
+        <span class="section-eyebrow">AniList · Live Data</span>
+        <h2 class="section-title center">Romance Anime I've Watched</h2>
+        <p class="section-lead center">Fetched live from my AniList profile. Every one of these left a mark.</p>
+      </div>
+
+      <div class="carousel-wrapper">
+        <button class="carousel-btn prev" id="prevBtn" aria-label="Previous">‹</button>
+        <div class="carousel-track-container" id="carouselContainer">
+          <div class="carousel-track" id="carouselTrack"></div>
+        </div>
+        <button class="carousel-btn next" id="nextBtn" aria-label="Next">›</button>
+      </div>
+
+      <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+        <p>Fetching anime list from AniList…</p>
+      </div>
+      <div class="error-msg" id="errorMsg" style="display:none;">
+        <p>🌸 Couldn't load anime data. Check the username or try again later.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Featured Picks ── -->
+  <section class="picks-section" id="picks">
+    <div class="container">
+      <div class="section-header center fade-in">
+        <span class="section-eyebrow">Personal Recommendations</span>
+        <h2 class="section-title center">My All-Time Picks</h2>
+        <p class="section-lead center">If you're new to romance anime, start here. These are the ones that rewired my heart.</p>
+      </div>
+
+      <div class="picks-grid">
+        <div class="pick-card fade-in">
+          <div class="pick-cover" style="background: url('/assets/image/Placeholder.jpg'); background-size: cover;"></div>
+          <div class="pick-body">
+            <p class="pick-tag">Romance · Sports · School</p>
+            <h3>BLUE BOX</h3>
+            <p>a romantic-sports slice-of-life anime focusing on Taiki Inomata, a badminton player who develops a crush on Chinatsu Kano, the star basketball player at their integrated high school</p>
+            <div class="pick-footer">
+              <span class="pick-rating">♥♥♥♥♥</span>
+              <span class="pick-year">2008</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Favorites Ticker ── -->
+  <section class="favorites-section" aria-hidden="true">
+    <div class="favorites-track">
+      <span>🌸 Toradora</span><span>💜 Your Lie in April</span><span>🌙 Clannad</span>
+      <span>🌺 Fruits Basket</span><span>💌 Kimi ni Todoke</span><span>✨ Horimiya</span>
+      <span>🎵 Anohana</span><span>🌸 Oregairu</span><span>💕 Ao Haru Ride</span>
+      <span>🌼 Nagi no Asukara</span><span>🎭 Wotakoi</span><span>🌟 Chuunibyou</span>
+      <span>🌸 Toradora</span><span>💜 Your Lie in April</span><span>🌙 Clannad</span>
+      <span>🌺 Fruits Basket</span><span>💌 Kimi ni Todoke</span><span>✨ Horimiya</span>
+      <span>🎵 Anohana</span><span>🌸 Oregairu</span><span>💕 Ao Haru Ride</span>
+      <span>🌼 Nagi no Asukara</span><span>🎭 Wotakoi</span><span>🌟 Chuunibyou</span>
+    </div>
+  </section>
+
+  <!-- ── Contact ── -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-eyebrow">Get in Touch</span>
+        <h2 class="section-title">Say Hello</h2>
+        <p class="section-lead">Whether you want to talk anime, share a recommendation, or just say hi — I'm always around.</p>
+      </div>
+
+      <div class="contact-layout">
+        <div class="contact-info fade-in">
+          <div class="contact-links">
+            <a href="mailto:[email]" class="contact-link">
+              <span class="contact-link-icon">📧</span>
+              <div>
+                <strong style="display:block;font-size:0.88rem;">Email</strong>
+                <span style="font-size:0.78rem;color:var(--text-muted);">[your@email.com]</span>
+              </div>
+            </a>
+            <a href="#" class="contact-link">
+              <span class="contact-link-icon">🐦</span>
+              <div>
+                <strong style="display:block;font-size:0.88rem;">Twitter / X</strong>
+                <span style="font-size:0.78rem;color:var(--text-muted);">@arukiya</span>
+              </div>
+            </a>
+            <a href="#" class="contact-link">
+              <span class="contact-link-icon">📷</span>
+              <div>
+                <strong style="display:block;font-size:0.88rem;">Instagram</strong>
+                <span style="font-size:0.78rem;color:var(--text-muted);">@arukiya</span>
+              </div>
+            </a>
+            <a href="https://anilist.co" target="_blank" rel="noopener" class="contact-link">
+              <span class="contact-link-icon">🎌</span>
+              <div>
+                <strong style="display:block;font-size:0.88rem;">AniList</strong>
+                <span style="font-size:0.78rem;color:var(--text-muted);">anilist.co/user/Arukiya</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form fade-in delay-1" onsubmit="handleForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">Name</label>
+              <input type="text" id="fname" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="femail">Email</label>
+              <input type="email" id="femail" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="fsubject">Subject</label>
+            <select id="fsubject">
+              <option value="">Select a topic…</option>
+              <option>Anime Recommendation</option>
+              <option>Collaboration</option>
+              <option>Just Saying Hi</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="fmsg">Message</label>
+            <textarea id="fmsg" rows="5" placeholder="Tell me something lovely…" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary">Send Message ✉️</button>
+          <p class="form-success" id="formSuccess">Message sent! 🌸 I'll reply soon.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="nav-logo">Arukiya</span>
+          <p>A creative space built on romance anime, soft aesthetics, and the belief that every story deserves to be told with care.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigate</h5>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#journey">Journey</a></li>
+            <li><a href="#anime">Anime</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Discover</h5>
+          <ul>
+            <li><a href="#picks">My Picks</a></li>
+            <li><a href="https://anilist.co" target="_blank" rel="noopener">AniList Profile</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Connect</h5>
+          <ul>
+            <li><a href="mailto:[email]">Email</a></li>
+            <li><a href="#">Twitter / X</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#contact">Contact Form</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Arukiya. Made with 💕 and a lot of anime.</span>
+        <span>Anime data powered by <a href="https://anilist.co" target="_blank" rel="noopener" style="color:var(--pink);text-decoration:none;">AniList</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script src="chatbot.js"></script>
+</body>
+</html>
